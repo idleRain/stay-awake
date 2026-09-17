@@ -89,6 +89,7 @@ EXCLUDED_MODULES: tuple[str, ...] = (
 
 
 def main() -> None:
+    sys.stdout.reconfigure(encoding="utf-8")
     if not ENTRY.exists():
         sys.exit(f"未找到入口文件: {ENTRY}")
     if not APP_ICON.exists():
