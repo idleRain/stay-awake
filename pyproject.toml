@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stay-awake"
+dynamic = ["version"]
+description = "常驻 Windows 系统状态栏，阻止系统休眠与息屏"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "idleRain" }]
+requires-python = ">=3.10"
+classifiers = [
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pillow>=10.0",
+    "pystray>=0.19",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/idleRain/stay-awake"
+Issues = "https://github.com/idleRain/stay-awake/issues"
+
+[project.gui-scripts]
+stay-awake = "stay_awake.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+stay_awake = ["assets/*.png"]
+
+[tool.setuptools.dynamic]
+version = { attr = "stay_awake.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
